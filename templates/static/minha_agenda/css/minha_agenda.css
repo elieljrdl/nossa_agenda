@@ -1,0 +1,272 @@
+/* Estilos customizados para o calendário */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.titulo-principal {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+.calendario-tabela {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.calendario-tabela thead {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.calendario-tabela thead th {
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.calendario-tabela tbody td {
+  height: 120px;
+  width: 14.28%;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  vertical-align: top;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+.calendario-tabela tbody td:hover {
+  background: #f1f5f9;
+  transform: scale(1.02);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.calendario-tabela tbody td.vazio {
+  background: #f8fafc;
+  cursor: default;
+}
+
+.calendario-tabela tbody td.vazio:hover {
+  background: #f8fafc;
+  transform: none;
+  box-shadow: none;
+}
+
+.calendario-tabela tbody td.hoje {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  font-weight: 700;
+  border: 2px solid #f59e0b;
+}
+
+.calendario-tabela tbody td.hoje:hover {
+  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+}
+
+/* Estilos para os compromissos dentro das células */
+.calendario-tabela tbody td div {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  border: 1px solid #8b5cf6;
+  border-radius: 6px;
+  padding: 4px 6px;
+  margin: 2px 0;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #5b21b6;
+  font-weight: 500;
+}
+
+/* Modal customizado */
+.modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-body label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.modal-body input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.modal-body input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background: #f8fafc;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+/* Lista de compromissos */
+h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem auto 1rem auto;
+  text-align: center;
+  max-width: 1200px;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+ul {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  list-style: none;
+}
+
+ul li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 1.8rem;
+  }
+  
+  .calendario-tabela tbody td {
+    height: 80px;
+    padding: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .calendario-tabela tbody td div {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .calendario-tabela thead th {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Close button customizado */
+.close {
+  color: white;
+  opacity: 0.8;
+  font-size: 1.5rem;
+}
+
+.close:hover {
+  color: white;
+  opacity: 1;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+ul li .info {
+  flex-grow: 1;
+  text-align: left; /* Garante alinhamento à esquerda */
+}
+
+ul li button.btn-danger {
+  font-size: 0.8em;
+  padding: 4px 8px;
+  white-space: nowrap;
+  margin-left: 12px;
+}
