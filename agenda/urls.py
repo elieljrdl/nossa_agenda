@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path("minha_agenda/", views.agenda, name="agenda"),
-    path("inserir_compromisso", views.inserir_compromisso, name="inserir"),
+    path('excluir/<int:id>/', views.excluir_compromisso, name='excluir_compromisso'),
+    path('adiciona/', views.adiciona_compromisso, name='adiciona_compromisso'),
 ]

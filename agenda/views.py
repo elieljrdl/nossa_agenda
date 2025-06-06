@@ -4,6 +4,7 @@ from calendar import Calendar
 from datetime import datetime
 from django.shortcuts import redirect
 from .models import MinhaAgenda
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -38,22 +39,6 @@ def agenda(request):
      
         
     
-    if request.method == 'POST':
-        descricao = request.POST.get('descricao')
-        data = request.POST.get('data')
-        horario = request.POST.get('horario')
-        
-        compromisso = MinhaAgenda(descricao=descricao, data=data, horario=horario)
-        
-        compromisso.save()
-        
-        print(data.split('-'))
-        
-        nova_data = data.split('-')
-        mes = nova_data[1]
-        ano = nova_data[0]
-        return redirect(f'/agenda/minha_agenda/?mes={mes}&ano={ano}') 
-    
     compromissos = MinhaAgenda.objects.all().order_by('data', 'horario')
     
     
@@ -74,7 +59,32 @@ def agenda(request):
 
 
 
+def adiciona_compromisso(request):
+    
+    if request.method == 'POST':
+            descricao = request.POST.get('descricao')
+            data = request.POST.get('data')
+            horario = request.POST.get('horario')
+            
+            compromisso = MinhaAgenda(descricao=descricao, data=data, horario=horario)
+            
+            compromisso.save()
+            
+            
+            nova_data = data.split('-')
+            mes = nova_data[1]
+            ano = nova_data[0]
+            return redirect(f'/agenda/minha_agenda/?mes={mes}&ano={ano}')  
+        
+    return redirect('agenda')
 
 
-def inserir_compromisso(request):
-    return HttpResponse('Aqui vou inserir')
+def excluir_compromisso(request, id):
+    compromisso = get_object_or_404(MinhaAgenda, id=id)
+    compromisso.delete()
+    
+    data = compromisso.data
+    mes = data.month
+    ano = data.year
+    
+    return redirect(f'/agenda/minha_agenda/?mes={mes}&ano={ano}')
