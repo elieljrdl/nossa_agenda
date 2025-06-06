@@ -14,7 +14,7 @@ def agenda(request):
     month = today.month
     
     cal = Calendar(firstweekday=6)
-    weekly = cal.monthdayscalendar(year, month)
+    week = cal.monthdayscalendar(year, month)
     
     
     
@@ -22,7 +22,7 @@ def agenda(request):
         cal = Calendar(firstweekday=6)
         month = int(request.GET.get('mes'))
         year = int(request.GET.get('ano'))
-        weekly = cal.monthdayscalendar(year, month)
+        week = cal.monthdayscalendar(year, month)
         
     mes_anterior = month - 1
     ano_anterior = year
@@ -45,7 +45,7 @@ def agenda(request):
     context = {
     'ano': year,
     'mes': month,
-    'weekly': weekly,
+    'weekly': week,
     'today': today,
     'compromissos': compromissos,
     'mes_anterior': mes_anterior,
